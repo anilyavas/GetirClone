@@ -1,14 +1,16 @@
 import { View, Text, Pressable , Image, Dimensions} from 'react-native'
 import {Entypo} from "@expo/vector-icons"
 import { Product } from '../../models'
+import { useNavigation } from '@react-navigation/native'
 
 const {width,height} = Dimensions.get("window")
 type productItemType = {
     item: Product
 }
-const ProductItem = ({item}:{item:Product}) => {
+const ProductItem = ({item}:productItemType) => {
+  const navigation = useNavigation()
   return (
-      <Pressable style={{width: width*0.28, marginTop: 12,height: height*0.24,marginLeft: 12,marginBottom: 6}}>
+      <Pressable onPress={() => navigation.navigate("ProductDetails",{product:item})} style={{width: width*0.28, marginTop: 12,height: height*0.24,marginLeft: 12,marginBottom: 6}}>
         <Image style={{width: width*0.28, height: width*0.28,borderRadius: 12,borderWidth: 0.1,borderColor: "grey"}} source={{uri: item.image}}/>
       <View style={{flexDirection: "row",marginTop: 10,alignItems: "center"}}>
         <Text style={{fontSize: 11,color: "#747990",textDecorationLine: "line-through"}}>

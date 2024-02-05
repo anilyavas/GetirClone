@@ -3,6 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack"
 import HomeScreen from '../screens/HomeScreen';
 import { Image, Text } from 'react-native';
 import CategoryFilterScreen from '../screens/CategoryFilterScreen';
+import ProducstDetailsScreen from '../screens/ProducstDetailsScreen';
 
 
 const Stack = createStackNavigator();
@@ -21,6 +22,9 @@ const HomeNavigator = () => {
             headerTitle: () => (
             <Text style={{fontWeight: "bold", fontSize: 15,color: "white"}}>Ürünler</Text>
         )}}/>
+        <Stack.Screen name='ProducstDetails' component={ProducstDetailsScreen} options={{
+          
+        }}/>
     </Stack.Navigator>
   )
 }
