@@ -9,7 +9,6 @@ const CategoryBox = ({item,active}:{item:Category,active:Category}) => {
     return <View style={[{paddingHorizontal: 9, flexDirection: "row",alignItems: "center"},item.name == active.name && {borderBottomColor: "#ffd00c",borderBottomWidth: 2.5}]}>
         <Text style={{fontSize: 14,color: "white", fontWeight: "600"}}>{item.name}</Text>
     </View>
-
 }
 const CategoryFiltering = ({category}:{category:Category}) => {
     const [categories,setCategories] = useState<Category[]>(categoriesGetir)
