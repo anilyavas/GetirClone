@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Text,ScrollView,Dimensions, Pressable } from 'react-native'
 
 const {width, height} = Dimensions.get("window")
-const TypeBox = ({item,active}:{item:string,active:string}) => {
+const TypeBox = ({item,active,setCat}:{item:string,active:string,setCat:any}) => {
     return (
-        <Pressable style={[{flexDirection:"row",alignItems: "center",paddingHorizontal: 10,marginRight: 12,borderRadius: 6,height: height*0.044},item==active ? {backgroundColor: "#5c3ecb"}:{borderColor: "#f0eff7",borderWidth: 1}]}>
+        <Pressable onPress={() => setCat(item)}style={[{flexDirection:"row",alignItems: "center",paddingHorizontal: 10,marginRight: 12,borderRadius: 6,height: height*0.044},item==active ? {backgroundColor: "#5c3ecb"}:{borderColor: "#f0eff7",borderWidth: 1.3}]}>
             <Text style={[{fontSize: 12,fontWeight: "600",color: "#5c3ecb"},item==active && {color: "white"}]}>{item}</Text>
         </Pressable>
     )
@@ -15,7 +15,7 @@ const TypeFiltering = () => {
     <ScrollView style={{width: "100%", height: height*0.072,flexDirection: "row",backgroundColor:"white", paddingVertical: height*0.014,paddingHorizontal: 12}} showsHorizontalScrollIndicator={false} bounces={true} horizontal={true}>
         {
             ["Birlikte İyi Gider","Çubuk", "Kutu", "Külah","Çoklu","Bar"].map((item) => (
-                <TypeBox item={item} active={category}/>
+                <TypeBox setCat={setCategory} item={item} active={category}/>
             ))
         }
     </ScrollView>
