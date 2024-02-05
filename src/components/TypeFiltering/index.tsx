@@ -12,7 +12,7 @@ const TypeBox = ({item,active,setCat}:{item:string,active:string,setCat:any}) =>
 const TypeFiltering = () => {
     const [category,setCategory] = useState<String>("Birlikte İyi Gider")
   return (
-    <ScrollView style={{width: "100%", height: height*0.072,flexDirection: "row",backgroundColor:"white", paddingVertical: height*0.014,paddingHorizontal: 12}} showsHorizontalScrollIndicator={false} bounces={true} horizontal={true}>
+    <ScrollView style={{width: "100%", height: height*0.072,flexDirection: "row",backgroundColor:"white", paddingVertical: height*0.014,paddingHorizontal: 12,borderBottomColor: "lightgrey", borderBottomWidth: 1}} showsHorizontalScrollIndicator={false} bounces={true} horizontal={true}>
         {
             ["Birlikte İyi Gider","Çubuk", "Kutu", "Külah","Çoklu","Bar"].map((item) => (
                 <TypeBox setCat={setCategory} item={item} active={category}/>
