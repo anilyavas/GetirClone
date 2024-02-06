@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-const ProducstDetailsScreen = () => {
+const ProductsDetailsScreen = () => {
   return (
     <View>
       <Text>index</Text>
@@ -8,4 +8,4 @@ const ProducstDetailsScreen = () => {
   )
 }
 
-export default ProducstDetailsScreen
+export default ProductsDetailsScreen

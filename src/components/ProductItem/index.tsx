@@ -10,7 +10,7 @@ type productItemType = {
 const ProductItem = ({item}:productItemType) => {
   const navigation = useNavigation()
   return (
-      <Pressable onPress={() => navigation.navigate("ProductDetails",{product:item})} style={{width: width*0.28, marginTop: 12,height: height*0.24,marginLeft: 12,marginBottom: 6}}>
+      <Pressable onPress={() => navigation.navigate("ProductsDetails",{product: item})} style={{width: width*0.28, marginTop: 12,height: height*0.24,marginLeft: 12,marginBottom: 6}}>
         <Image style={{width: width*0.28, height: width*0.28,borderRadius: 12,borderWidth: 0.1,borderColor: "grey"}} source={{uri: item.image}}/>
       <View style={{flexDirection: "row",marginTop: 10,alignItems: "center"}}>
         <Text style={{fontSize: 11,color: "#747990",textDecorationLine: "line-through"}}>
