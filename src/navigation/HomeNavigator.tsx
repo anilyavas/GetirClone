@@ -1,4 +1,4 @@
-import React from "react";
+import  { useLayoutEffect } from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 import HomeScreen from '../screens/HomeScreen';
 import { Image, Pressable, Text } from 'react-native';
@@ -9,10 +9,9 @@ import { getFocusedRouteNameFromRoute, useNavigation } from '@react-navigation/n
 
 
 const Stack = createStackNavigator()
-
 function MyStack ({navigation,route}) {
-  const tabHiddenRoutes = ["ProductDetails","CartScreen"];
-  React.useLayoutEffect(() => {
+  const tabHiddenRoutes = ["ProductDetails"];
+  useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route)
     if(tabHiddenRoutes.includes(routeName)){
       navigation.setOptions({tabBarStyle : {display: "none"}})
@@ -21,6 +20,7 @@ function MyStack ({navigation,route}) {
       navigation.setOptions({tabBarStyle: {display: "true"}})
     }
   },[navigation,route])
+  const navigation_user = useNavigation()
   return (
     <Stack.Navigator>
         <Stack.Screen name='Home' component={HomeScreen} 
@@ -42,7 +42,7 @@ function MyStack ({navigation,route}) {
           headerStyle: {backgroundColor: "#5c3ebc"},
           headerBackTitleVisible: false,
           headerLeft: () => (
-            <Pressable style={{paddingLeft: 12}} onPress={() => navigation.goBack()}>
+            <Pressable style={{paddingLeft: 12}} onPress={() => navigation_user.goBack()}>
               <Ionicons name='close' size={24} color={"white"}/>
             </Pressable>
           ),
