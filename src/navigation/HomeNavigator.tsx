@@ -7,24 +7,22 @@ import {Ionicons,Foundation} from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
+import { Product } from "../models";
 
 
 const tabHiddenRoutes = ["ProductDetails","CartScreen"];
 const Stack = createStackNavigator()
-const HomeNavigator = () => {
-  const navigation = useNavigation()
+function MyStack({ navigation, route, cartItems, clearCart }:{cartItems:Product[],clearCart: () => void}) {
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-    console.log("Route Name is ", routeName);
     if (tabHiddenRoutes.includes(routeName)) {
-      console.log("Kapat ", routeName);
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
-      console.log("Aç ", routeName);
       navigation.setOptions({ tabBarStyle: { display: "true" } });
     }
   }, [navigation, route]);
-  
+const HomeNavigator = () => {
+  const navigation = useNavigation()
   return (
     <Stack.Navigator>
         <Stack.Screen name='Home' component={HomeScreen} 
