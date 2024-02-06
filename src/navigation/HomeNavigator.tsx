@@ -1,28 +1,26 @@
+import React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 import HomeScreen from '../screens/HomeScreen';
 import { Image, Pressable, Text } from 'react-native';
 import CategoryFilterScreen from '../screens/CategoryFilterScreen';
 import ProductsDetailsScreen from '../screens/ProductsDetailsScreen';
 import {Ionicons,Foundation} from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { useLayoutEffect } from "react";
-import { Product } from "../models";
+import { getFocusedRouteNameFromRoute, useNavigation } from '@react-navigation/native';
 
 
-const tabHiddenRoutes = ["ProductDetails","CartScreen"];
 const Stack = createStackNavigator()
-function MyStack({ navigation, route, cartItems, clearCart }:{cartItems:Product[],clearCart: () => void}) {
-  useLayoutEffect(() => {
-    const routeName = getFocusedRouteNameFromRoute(route);
-    if (tabHiddenRoutes.includes(routeName)) {
-      navigation.setOptions({ tabBarStyle: { display: "none" } });
-    } else {
-      navigation.setOptions({ tabBarStyle: { display: "true" } });
+
+function MyStack ({navigation,route}) {
+  const tabHiddenRoutes = ["ProductDetails","CartScreen"];
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route)
+    if(tabHiddenRoutes.includes(routeName)){
+      navigation.setOptions({tabBarStyle : {display: "none"}})
+      
+    }else{
+      navigation.setOptions({tabBarStyle: {display: "true"}})
     }
-  }, [navigation, route]);
-const HomeNavigator = () => {
-  const navigation = useNavigation()
+  },[navigation,route])
   return (
     <Stack.Navigator>
         <Stack.Screen name='Home' component={HomeScreen} 
@@ -50,12 +48,16 @@ const HomeNavigator = () => {
           ),
           headerRight: () => (
             <Pressable style={{paddingRight: 12}}>
-              <Foundation name='heart' size={24} color={"black"}/>
+              <Foundation name='heart' size={24} color={"#32177a"}/>
             </Pressable>
-          )
+          ),
+          
+          
         }}/>
     </Stack.Navigator>
   )
 }
 
-export default HomeNavigator
+export default function HomeNavigator({navigation,route}){
+  return <MyStack navigation={navigation} route={route} />
+}
