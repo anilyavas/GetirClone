@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 function MyStack({ navigation, route }) {
   const tabHiddenRoutes = ['ProductDetails'];
   useLayoutEffect(() => {
-    const routeName = getFocusedRouteNameFromRoute(route);
+    const routeName: any = getFocusedRouteNameFromRoute(route);
     if (tabHiddenRoutes.includes(routeName)) {
       navigation.setOptions({ tabBarStyle: { display: 'none' } });
     } else {
