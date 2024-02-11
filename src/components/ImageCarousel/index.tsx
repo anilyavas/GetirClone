@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
-import { Dimensions, FlatList, Image, View } from 'react-native';
-import index from '../HeaderMain';
+import { Dimensions, FlatList, Image, View, StyleSheet } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 const ImageCarousel = ({ images }: { images: string[] }) => {
@@ -43,9 +42,37 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
         viewabilityConfig={viewConfigRef.current}
         onViewableItemsChanged={onViewRef.current}
       />
-      <View></View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          width: 30,
+          height: 12,
+          justifyContent: 'space-around',
+        }}
+      >
+        {images.map((image, index) => (
+          <View
+            key={index}
+            style={[
+              styles.dot,
+              {
+                backgroundColor: activeIndex === index ? '#5d3ebd' : '#f2f0fd',
+              },
+            ]}
+          />
+        ))}
+      </View>
     </View>
   );
 };
 
 export default ImageCarousel;
+
+const styles = StyleSheet.create({
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 20,
+  },
+});
