@@ -42,15 +42,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
         viewabilityConfig={viewConfigRef.current}
         onViewableItemsChanged={onViewRef.current}
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          width: 30,
-          height: 12,
-          justifyContent: 'space-around',
-        }}
-      >
+      <View style={styles.dots}>
         {images.map((image, index) => (
           <View
             key={index}
@@ -70,6 +62,13 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
 export default ImageCarousel;
 
 const styles = StyleSheet.create({
+  dots: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 30,
+    height: 12,
+    justifyContent: 'space-around',
+  },
   dot: {
     width: 8,
     height: 8,
