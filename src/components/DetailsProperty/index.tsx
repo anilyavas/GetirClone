@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, Text } from 'react-native';
-
+import { Feather } from '@expo/vector-icons';
 const DetailProperty = () => {
   const [details, setDetails] = useState<string[]>([
     'Sütlü kıtır çikolata ve badem parçacıkları ile kaplı vanilya lezzeti',
@@ -26,7 +26,7 @@ const DetailProperty = () => {
       >
         <Text
           style={{
-            color: index == 0 ? '#424242' : '#687482',
+            color: index == 0 ? 'black' : '#687482',
             fontSize: index == 0 ? 10 : 13,
             fontWeight: index == 0 ? '400' : '500',
           }}
