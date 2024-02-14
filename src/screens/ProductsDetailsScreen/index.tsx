@@ -2,6 +2,7 @@ import { View, Text, ActivityIndicator } from 'react-native';
 import { useState, useEffect } from 'react';
 import { Product } from '../../models';
 import ImageCarousel from '../../components/ImageCarousel';
+import DetailsBox from '../../components/DetailsBox';
 
 const ProductsDetailsScreen = (props) => {
   const [product, setProduct] = useState<Product>();
@@ -16,6 +17,11 @@ const ProductsDetailsScreen = (props) => {
   return (
     <View>
       <ImageCarousel images={product.images} />
+      <DetailsBox
+        price={product.fiyat}
+        name={product.name}
+        quantitiy={product.miktar}
+      />
     </View>
   );
 };
