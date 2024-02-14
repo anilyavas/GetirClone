@@ -1,12 +1,11 @@
 import { View, Text } from 'react-native';
-import React from 'react';
 
 type DetailsBoxProps = {
   price: number;
-  quantitiy: number;
+  quantity: string;
   name: string;
 };
-const DetailsBox = ({ price, quantitiy, name }: DetailsBoxProps) => {
+const DetailsBox = ({ price, quantity, name }: DetailsBoxProps) => {
   return (
     <View
       style={{
@@ -15,11 +14,36 @@ const DetailsBox = ({ price, quantitiy, name }: DetailsBoxProps) => {
         alignItems: 'center',
       }}
     >
-      <Text style={{ color: '#5d3ebd', fontWeight: 'bold', marginTop: 12 }}>
+      <Text
+        style={{
+          color: '#5d3ebd',
+          fontSize: 20,
+          fontWeight: 'bold',
+          marginTop: 12,
+        }}
+      >
         ₺{price}
       </Text>
-      <Text>{name}</Text>
-      <Text>{quantitiy}</Text>
+      <Text
+        style={{
+          fontSize: 16,
+          fontWeight: '600',
+          marginTop: 12,
+        }}
+      >
+        {name}
+      </Text>
+      <Text
+        style={{
+          fontSize: 16,
+          fontWeight: '600',
+          marginTop: 8,
+          color: '#848890',
+          paddingBottom: 17,
+        }}
+      >
+        {quantity}
+      </Text>
     </View>
   );
 };

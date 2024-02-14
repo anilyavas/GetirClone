@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../models';
 import ImageCarousel from '../../components/ImageCarousel';
 import DetailsBox from '../../components/DetailsBox';
+import DetailProperty from '../../components/DetailsProperty';
 
-const ProductsDetailsScreen = (props) => {
+const ProductsDetailsScreen = (props: any) => {
   const [product, setProduct] = useState<Product>();
   useEffect(() => {
     setProduct(props.route.params.product);
@@ -20,8 +21,19 @@ const ProductsDetailsScreen = (props) => {
       <DetailsBox
         price={product.fiyat}
         name={product.name}
-        quantitiy={product.miktar}
+        quantity={product.miktar}
       />
+      <Text
+        style={{
+          paddingHorizontal: 10,
+          paddingVertical: 14,
+          color: '#808899',
+          fontWeight: '600',
+        }}
+      >
+        Detaylar
+      </Text>
+      <DetailProperty />
     </View>
   );
 };
